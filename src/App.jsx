@@ -1,11 +1,12 @@
 import { Outlet } from 'react-router-dom'
+import Navbar from './Components/Header/Navbar'
 
 function App() {
 
 
   return (
-    <div>
-      <h1>Header</h1>
+    <div className='container mx-auto'>
+      <Navbar />
       <Outlet />
     </div>
   )
