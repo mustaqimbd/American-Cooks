@@ -1,8 +1,9 @@
 import { useContext, useState } from 'react';
 import { UserContext } from '../Provider/AuthProvider';
-
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { GithubAuthProvider, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { Link } from 'react-router-dom';
+import { FaGoogle } from 'react-icons/fa';
+import { FaGithub } from 'react-icons/fa';
 
 
 function Login() {
@@ -40,6 +41,16 @@ function Login() {
                 setError(err.message);
             })
     }
+    const githubProvider = new GithubAuthProvider();
+    const loginWithGithub = () => {
+        signInWithPopup(auth, githubProvider)
+            .then(() => {
+                setSuccess('Login has been successful!');
+            })
+            .catch(err => {
+                setError(err.message);
+            })
+    }
 
 
 
@@ -49,7 +60,7 @@ function Login() {
             <p className="text-blue-800 text-center mt-3">{success || ''}</p>
             <form onSubmit={handleSignIn} className="max-w-md mx-auto mt-10 bg-purple-400 p-6">
                 <h1 className='text-2xl font-bold text-center'>Please Login</h1>
-                
+
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2" htmlFor="email">
                         Email
@@ -80,7 +91,7 @@ function Login() {
                         required
                     />
                 </div>
-               <p className='text-center my-2'>New to Here? Please <Link className='text-blue-700 font-bold' to='/resister'>Register</Link></p>
+                <p className='text-center my-2'>New to Here? Please <Link className='text-blue-700 font-bold' to='/resister'>Register</Link></p>
                 <div className="flex items-center justify-evenly">
                     <button
                         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
@@ -91,8 +102,8 @@ function Login() {
                 </div>
             </form>
             <div className="flex flex-col m-8">
-                <button onClick={loginWithGoogle} className="bg-blue-600 text-lg font-bold px-4 py-2 mb-4 w-[230px] rounded-md mx-auto">Login with Google</button>
-                <button className="bg-blue-600 text-lg font-bold px-4 py-2 w-[230px] rounded-md mx-auto">Login with Github</button>
+                <button onClick={loginWithGoogle} className="bg-blue-600 text-lg font-bold px-4 py-2 mb-4 w-[230px] rounded-md mx-auto flex items-center gap-2"><FaGoogle /> Login with Google</button>
+                <button onClick={loginWithGithub} className="bg-blue-600 text-lg font-bold px-4 py-2 w-[230px] rounded-md mx-auto flex items-center gap-2"><FaGithub /> Login with Github</button>
             </div>
         </>
     );
