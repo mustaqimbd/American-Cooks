@@ -6,7 +6,7 @@ import { signOut } from 'firebase/auth';
 
 const Navbar = () => {
     const { user, loading, auth } = useContext(UserContext)
-    console.log(user, loading);
+    // console.log(user, loading);
     const logOUt = () => {
         signOut(auth)
             .then(() => { })
@@ -21,7 +21,7 @@ const Navbar = () => {
             </ul>
             <div>
                 {
-                    user ? <div><img className='w-10 h-10 rounded-full' src={user.photoURL && user.photoURL} alt="img" title={user.displayName && user.displayName} /> <button onClick={logOUt}>Log out</button></div>
+                    user ? <div className=' flex gap-4'><img className='w-10 h-10 rounded-full' src={user.photoURL && user.photoURL} alt="img" title={user.displayName && user.displayName} /> <button className='py-2 px-3 text-lg font-bold bg-purple-700 rounded-md text-white' onClick={logOUt}>Log out</button></div>
                         : loading == false && <span><Link to='/login' className='py-2 px-3 text-lg font-bold bg-purple-700 rounded-md text-white'>Login</Link></span>
                 }
 
