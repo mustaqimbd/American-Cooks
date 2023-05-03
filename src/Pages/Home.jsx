@@ -3,6 +3,7 @@ import Banner from '../Components/Header/Banner';
 import Chefs from '../Components/Chefs/Chefs';
 import { useLoaderData } from 'react-router-dom';
 import OurRecipe from '../Components/Recipe/OurRecipe';
+import Achivement from '../Components/Achivement/Achivement';
 
 const Home = () => {
 
@@ -11,6 +12,7 @@ const Home = () => {
             <Banner />
             <Chefs />
             <OurRecipe />
+            <Achivement />
         </div>
     );
 };
