@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
 import { UserContext } from '../Provider/AuthProvider';
 import { GithubAuthProvider, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaGoogle } from 'react-icons/fa';
 import { FaGithub } from 'react-icons/fa';
 
@@ -14,6 +14,10 @@ function Login() {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('')
+    
+    const navigate = useNavigate();
+    const location = useLocation();
+    const redirect = location?.state?.pathname || '/';
 
     const handleSignIn = (e) => {
         e.preventDefault();
@@ -22,6 +26,7 @@ function Login() {
         signIn(email, password)
             .then(r => {
                 console.log(r.user);
+                navigate(redirect, { replace: true })
             })
             .then(() => {
                 setSuccess('Login has been successful!');
@@ -36,6 +41,7 @@ function Login() {
         signInWithPopup(auth, googleProvider)
             .then(() => {
                 setSuccess('Login has been successful!');
+                navigate(redirect, { replace: true })
             })
             .catch(err => {
                 setError(err.message);
@@ -46,6 +52,7 @@ function Login() {
         signInWithPopup(auth, githubProvider)
             .then(() => {
                 setSuccess('Login has been successful!');
+                navigate(redirect, { replace: true })
             })
             .catch(err => {
                 setError(err.message);

@@ -26,7 +26,7 @@ const Navbar = () => {
                     Home
                 </NavLink>
                 </li>
-                <li className='mb-2 lg:mb-0g'> <NavLink
+                <li className='mb-2 lg:mb-0'> <NavLink
                     to='/blog'
                     className={({ isActive }) =>
                         isActive
