@@ -1,20 +1,20 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { UserContext } from '../../Provider/AuthProvider';
 import { signOut } from 'firebase/auth';
-
+import { FaBars } from 'react-icons/fa';
 const Navbar = () => {
     const { user, loading, auth } = useContext(UserContext)
-    // console.log(user, loading);
+    const [open, setOpen] = useState(false)
     const logOUt = () => {
         signOut(auth)
             .then(() => { })
             .catch(err => { console.log(err.message); })
     }
     return (
-        <div className='flex p-5 bg-purple-200 items-center'>
+        <div className='p-3 lg:flex lg:p-5 bg-purple-200 lg:items-center justify-between relative'>
             <h1 className='text-3xl font-bold'>Recipe World</h1>
-            <ul className='flex gap-10 mx-auto text-lg font-bold'>
+            <ul className={`lg:flex gap-10 text-lg font-bold items-center ${open ? 'visible' : 'hidden'}`}>
                 <li> <NavLink
                     to='/'
                     className={({ isActive }) =>
@@ -26,7 +26,7 @@ const Navbar = () => {
                     Home
                 </NavLink>
                 </li>
-                <li> <NavLink
+                <li className='mb-2 lg:mb-0g'> <NavLink
                     to='/blog'
                     className={({ isActive }) =>
                         isActive
@@ -37,9 +37,7 @@ const Navbar = () => {
                     Blog
                 </NavLink>
                 </li>
-
-            </ul>
-            <div>
+                <li className='lg:ml-[220px]'><div>
                 {loading && <div aria-label="Loading..." role="status" className="flex items-center space-x-2">
                     <svg className="h-10 w-10 mr-8 animate-spin stroke-gray-500" viewBox="0 0 256 256">
                         <line x1="128" y1="32" x2="128" y2="64" strokeLinecap="round" strokeLinejoin="round" strokeWidth="24"></line>
@@ -55,11 +53,14 @@ const Navbar = () => {
                 </div>
                 }
                 {
-                    user ? <div className=' flex gap-4'><img className='w-10 h-10 rounded-full' src={user.photoURL && user.photoURL} alt="img" title={user.displayName && user.displayName} /> <button className='py-2 px-3 text-lg font-bold bg-purple-700 rounded-md text-white' onClick={logOUt}>Log out</button></div>
+                    user ? <div className='flex flex-col lg:flex-row gap-4'><img className='w-10 h-10 rounded-full' src={user.photoURL && user.photoURL} alt="img" title={user.displayName && user.displayName} /> <button className='max-w-[100px] py-2 px-3 text-lg font-bold bg-purple-700 rounded-md text-white' onClick={logOUt}>Log out</button></div>
                         : loading == false && <span><Link to='/login' className='py-2 px-3 text-lg font-bold bg-purple-700 rounded-md text-white'>Login</Link></span>
                 }
 
-            </div>
+            </div></li>
+            </ul>
+            
+            <span onClick={() => setOpen(!open)} className='lg:hidden absolute top-4 right-6'><FaBars /></span>
         </div>
     );
 };

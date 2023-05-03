@@ -1,10 +1,9 @@
-import React from 'react';
 
 const Banner = () => {
     return (
-        <div className='flex items-center gap-6 mt-10'>
-            <div className='space-y-4'>
-                <h1 className='text-5xl font-bold'>Welcome to <span className='text-yellow-400'>Recipe World</span></h1>
+        <div className='flex flex-col lg:flex-row items-center gap-4 lg:gap-6 mt-4 lg:mt-10'>
+            <div className='space-y-2 lg:space-y-4'>
+                <h1 className='text-3xl lg:text-5xl font-bold'>Welcome to <span className='text-yellow-400'>Recipe World</span></h1>
                 <p> Similique quas, delectus quisquam eum debitis consectetur possimus qui ducimus nulla natus!</p>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet.</p>
 

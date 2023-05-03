@@ -4,8 +4,8 @@ const Achivement = () => {
     return (
         <>
             <h1 className='text-center font-bold text-3xl mb-3 mt-12'>Our Achievement</h1>
-            <div className='flex gap-5 items-center mb-8'>
-                <div className='w-[40%]'>
+            <div className='flex lg:flex-row flex-col gap-5 items-center mb-8'>
+                <div className='lg:w-[40%]'>
                     <img className='w-full' src="https://cifmng.com/wp-content/uploads/2018/04/achievements-300x151.png" alt="" />
                 </div>
                 <div className='space-y-5'>

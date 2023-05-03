@@ -2,8 +2,8 @@
 const OurRecipe = () => {
     return (
         <div>
-            <h1 className="text-center text-3xl font-bold mt-10 mb-6">Our Best Easy Healthy Dinner Recipes gallery</h1>
-            <div className="grid grid-cols-3 gap-4 w-[80%] mx-auto">
+            <h1 className="text-center text-xl lg:text-3xl font-bold mt-5 lg:mt-10 mb-4 lg:mb-6">Our Best Easy Healthy Dinner Recipes gallery</h1>
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 lg:w-[80%] mx-auto">
                 <div>
                     <img className="w-full h-[150px]" src="https://images.immediate.co.uk/production/volatile/sites/30/2012/09/Beef-wellington-d4f3320.jpg?quality=90&webp=true&resize=300,272" alt="" />
                     <p className="text-center mt-2">Beef wellington</p>

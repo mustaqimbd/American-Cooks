@@ -7,7 +7,7 @@ const Chefs = () => {
         <div>
             <h1 className='text-3xl font-bold text-center mt-10'>Our Best American Chefs</h1>
             <p className="text-center my-3">Cook any best food recipe with experts chef of American.Cook any best food recipe with experts chef of American</p>
-            <div className="grid grid-cols-3 gap-5">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
                 {
                     chefs.map(chef => <ChefCard chef={chef} key={chef.id}></ChefCard>)
                 }
@@ -20,7 +20,7 @@ const ChefCard = ({ chef }) => {
     return (
         <div>
             <img className="w-full h-[200px]" src={pictureUrl} alt="" />
-            <div className="space-y-3">
+            <div className="space-y-1 lg:space-y-3">
                 <h3 className="text-center text-xl font-bold my-3">{name}</h3>
                 <p>Experience : {yearsOfExperience} years</p>
                 <p>Numbers of recipes : {numberOfRecipes}</p>

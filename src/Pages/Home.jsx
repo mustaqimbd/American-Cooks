@@ -8,7 +8,7 @@ import Achivement from '../Components/Achivement/Achivement';
 const Home = () => {
 
     return (
-        <div>
+        <div className='mx-4 lg:mx-0'>
             <Banner />
             <Chefs />
             <OurRecipe />
