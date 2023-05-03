@@ -1,13 +1,25 @@
 import { useLoaderData } from 'react-router-dom';
 import { GrFavorite } from 'react-icons/gr';
 import { AiFillLike } from 'react-icons/ai';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useState } from 'react';
 
 const ChefRicepeDetails = () => {
+    const [disaable, setDisable] = useState(false);
     const singleChefData = useLoaderData();
     const { id, name, bio, numberOfRecipes, pictureUrl, recipes, yearsOfExperience, likes } = singleChefData;
     console.log(singleChefData);
+
+    const notify = () => toast("Added to your favorite!");
+    const handleButtonClick = () => {
+        notify();
+        setDisable(true);
+    }
+
     return (
         <div>
+            <ToastContainer />
             <div>
                 <img className="w-full h-[413px]" src={pictureUrl} alt="" />
                 <div className="space-y-3">
@@ -16,7 +28,7 @@ const ChefRicepeDetails = () => {
                     <ul className='list-disc ml-6'>
                         <li>Experience : {yearsOfExperience} years</li>
                         <li>Numbers of recipes : {numberOfRecipes}</li>
-                        <li><AiFillLike/>Likes : {likes}</li>
+                        <li><AiFillLike />Likes : {likes}</li>
                     </ul>
                 </div>
             </div>
@@ -32,7 +44,7 @@ const ChefRicepeDetails = () => {
                                     <div className='flex justify-between items-center my-2 '>
                                         <h1 className='text-lg font-bold flex-grow-1'>Name : {name}</h1>
                                         <p className='flex gap-4 items-center'><span>Rating : {rating}</span>
-                                            <button className='bg-yellow-300 px-3 py-2 text-lg font-bold rounded-md'>Add to favorite</button></p>
+                                            <button onClick={handleButtonClick} disabled={disaable} className='bg-yellow-300 px-3 py-2 text-lg font-bold rounded-md'>Add to favorite</button></p>
                                     </div>
                                     <p className='text-xl font-bold'>Ingredients : </p>
                                     <ul className='list-decimal ml-8 mb-4'>
