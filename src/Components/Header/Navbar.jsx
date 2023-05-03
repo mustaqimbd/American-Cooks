@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { UserContext } from '../../Provider/AuthProvider';
 import { signOut } from 'firebase/auth';
 
@@ -15,8 +15,29 @@ const Navbar = () => {
         <div className='flex p-5 bg-purple-200 items-center'>
             <h1 className='text-3xl font-bold'>Recipe World</h1>
             <ul className='flex gap-10 mx-auto text-lg font-bold'>
-                <li><Link to='/'>Home</Link></li>
-                <li><Link>Blog</Link></li>
+                <li> <NavLink
+                    to='/'
+                    className={({ isActive }) =>
+                        isActive
+                            ? "text-blue-700"
+                            : ""
+                    }
+                >
+                    Home
+                </NavLink>
+                </li>
+                <li> <NavLink
+                    to='/blog'
+                    className={({ isActive }) =>
+                        isActive
+                            ? "text-blue-700"
+                            : ""
+                    }
+                >
+                    Blog
+                </NavLink>
+                </li>
+
             </ul>
             <div>
                 {loading && <div aria-label="Loading..." role="status" className="flex items-center space-x-2">
@@ -30,7 +51,7 @@ const Navbar = () => {
                         <line x1="32" y1="128" x2="64" y2="128" strokeLinecap="round" strokeLinejoin="round" strokeWidth="24"></line>
                         <line x1="60.1" y1="60.1" x2="82.7" y2="82.7" strokeLinecap="round" strokeLinejoin="round" strokeWidth="24"></line>
                     </svg>
-                    
+
                 </div>
                 }
                 {

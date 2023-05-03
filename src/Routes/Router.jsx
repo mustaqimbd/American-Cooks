@@ -5,6 +5,7 @@ import Resister from "../Pages/Resister";
 import Login from "../Pages/Login";
 import ChefRicepeDetails from "../Components/Chefs/ChefRicepeDetails";
 import ErrorPage from "../Pages/ErrorPage";
+import Blog from "../Pages/Blog";
 
 const router = createBrowserRouter([
     {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
                 path: '/chef-recipes/:id',
                 element: <ChefRicepeDetails />,
                 loader: ({ params }) => fetch(`http://localhost:5000/chefs/${params.id}`)
+            },
+            {
+                path: '/blog',
+                element: <Blog />
             },
             {
                 path: 'resister',
