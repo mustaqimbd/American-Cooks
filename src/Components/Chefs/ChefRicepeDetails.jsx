@@ -1,5 +1,4 @@
 import { useLoaderData } from 'react-router-dom';
-import { GrFavorite } from 'react-icons/gr';
 import { AiFillLike } from 'react-icons/ai';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';

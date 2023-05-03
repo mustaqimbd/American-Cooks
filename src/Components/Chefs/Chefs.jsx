@@ -1,5 +1,5 @@
 import { Link, useLoaderData } from "react-router-dom";
-
+import LazyLoad from 'react-lazy-load';
 
 const Chefs = () => {
     const { chefs } = useLoaderData();
@@ -19,7 +19,9 @@ const ChefCard = ({ chef }) => {
     const { id, name, numberOfRecipes, pictureUrl, recipes, yearsOfExperience, likes } = chef;
     return (
         <div>
-            <img className="w-full h-[200px]" src={pictureUrl} alt="" />
+            <LazyLoad>
+                <img className="w-full h-[200px]" src={pictureUrl} alt="" />
+            </LazyLoad>
             <div className="space-y-1 lg:space-y-3">
                 <h3 className="text-center text-xl font-bold my-3">{name}</h3>
                 <p>Experience : {yearsOfExperience} years</p>
