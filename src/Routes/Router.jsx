@@ -4,11 +4,13 @@ import Home from "../Pages/Home";
 import Resister from "../Pages/Resister";
 import Login from "../Pages/Login";
 import ChefRicepeDetails from "../Components/Chefs/ChefRicepeDetails";
+import ErrorPage from "../Pages/ErrorPage";
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <App />,
+        errorElement: <ErrorPage />,
         children: [
             {
                 path: '/',
