@@ -12,7 +12,7 @@ const Navbar = () => {
             .catch(err => { console.log(err.message); })
     }
     return (
-        <div className='p-3 lg:flex lg:p-5 bg-purple-200 lg:items-center justify-between relative'>
+        <div className='p-3 lg:flex lg:p-5 bg-purple-200 lg:items-center justify-between relative rounded-md'>
             <h1 className='text-3xl font-bold'>Recipe World</h1>
             <ul className={`lg:flex gap-10 text-lg font-bold items-center ${open ? 'visible' : 'hidden'}`}>
                 <li> <NavLink
