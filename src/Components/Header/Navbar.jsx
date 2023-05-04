@@ -53,8 +53,8 @@ const Navbar = () => {
                 </div>
                 }
                 {
-                    user ? <div className='flex flex-col lg:flex-row gap-4'><img className='w-10 h-10 rounded-full' src={user.photoURL && user.photoURL} alt="img" title={user.displayName && user.displayName} /> <button className='max-w-[100px] py-2 px-3 text-lg font-bold bg-purple-700 rounded-md text-white' onClick={logOUt}>Log out</button></div>
-                        : loading == false && <span><Link to='/login' className='py-2 px-3 text-lg font-bold bg-purple-700 rounded-md text-white'>Login</Link></span>
+                    user ? <div className='flex flex-col lg:flex-row gap-4'><img className='w-10 h-10 rounded-full' src={user.photoURL && user.photoURL} alt="img" title={user.displayName && user.displayName} /> <button className='max-w-[100px]  bg-purple-500 px-3 py-2 text-lg font-bold rounded-md' onClick={logOUt}>Log out</button></div>
+                        : loading == false && <span><Link to='/login' className='bg-purple-500 px-3 py-2 text-lg font-bold rounded-md'>Login</Link></span>
                 }
 
             </div></li>

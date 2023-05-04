@@ -3,7 +3,7 @@ import App from "../App";
 import Home from "../Pages/Home";
 import Resister from "../Pages/Resister";
 import Login from "../Pages/Login";
-import ChefRicepeDetails from "../Components/Chefs/ChefRicepeDetails";
+import ChefRicepeDetails from "../Pages/ChefRicepeDetails";
 import ErrorPage from "../Pages/ErrorPage";
 import Blog from "../Pages/Blog";
 import ProtectedRoute from "./ProtectedRoute";
@@ -17,12 +17,12 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home />,
-                loader: () => fetch('http://localhost:5000/chefs')
+                loader: () => fetch('https://recipe-world-server-zeta.vercel.app/chefs')
             },
             {
                 path: '/chef-recipes/:id',
                 element: <ProtectedRoute><ChefRicepeDetails /></ProtectedRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/chefs/${params.id}`)
+                loader: ({ params }) => fetch(`https://recipe-world-server-zeta.vercel.app/chefs/${params.id}`)
             },
             {
                 path: '/blog',

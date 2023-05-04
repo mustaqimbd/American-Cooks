@@ -3,7 +3,7 @@ import { AiFillLike } from 'react-icons/ai';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useState } from 'react';
-
+import Rating from 'react-rating';
 const ChefRicepeDetails = () => {
     const [disaable, setDisable] = useState(false);
     const singleChefData = useLoaderData();
@@ -22,12 +22,14 @@ const ChefRicepeDetails = () => {
             <div>
                 <img className="w-full h-[413px]" src={pictureUrl} alt="" />
                 <div className="space-y-3">
-                    <h3 className="text-2xl font-bold mt-3">Name :  {name}</h3>
+                    <div className='flex justify-between'>
+                        <h3 className="text-2xl font-bold mt-3">Name :  {name}</h3> <span className='flex items-center gap-2'><AiFillLike className='text-blue-600' />Like {likes}</span>
+                    </div>
                     <p><strong>Bio : </strong>{bio}</p>
                     <ul className='list-disc ml-6'>
                         <li>Experience : {yearsOfExperience} years</li>
                         <li>Numbers of recipes : {numberOfRecipes}</li>
-                        <li><AiFillLike />Likes : {likes}</li>
+
                     </ul>
                 </div>
             </div>
@@ -42,8 +44,17 @@ const ChefRicepeDetails = () => {
                                 <div className='mx-4'>
                                     <div className='flex justify-between items-center my-2 '>
                                         <h1 className='text-lg font-bold flex-grow-1'>Name : {name}</h1>
-                                        <p className='flex gap-4 items-center'><span>Rating : {rating}</span>
-                                            <button onClick={handleButtonClick} disabled={disaable} className='bg-yellow-300 px-3 py-2 text-lg font-bold rounded-md'>Add to favorite</button></p>
+                                        <p className='flex gap-4 items-center'>
+                                            <span className='flex items-center gap-1'><Rating
+                                                readonly
+                                                initialRating={rating}
+                                                emptySymbol={<span className="text-gray-400 text-2xl">&#9734;</span>}
+                                                placeholderSymbol={<span className="text-red-500 text-2xl">&#9733;</span>}
+                                                fullSymbol={<span className="text-yellow-500 text-2xl">&#9733;</span>}
+                                            />{rating}
+                                            </span>
+
+                                            <button onClick={handleButtonClick} disabled={disaable} className='bg-yellow-300 px-3 py-2 text-lg font-bold rounded-md'>Favorite</button></p>
                                     </div>
                                     <p className='text-xl font-bold'>Ingredients : </p>
                                     <ul className='list-decimal ml-8 mb-4'>

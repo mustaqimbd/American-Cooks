@@ -1,6 +1,6 @@
 import { Link, useLoaderData } from "react-router-dom";
 import LazyLoad from 'react-lazy-load';
-
+import { AiFillLike } from 'react-icons/ai';
 const Chefs = () => {
     const { chefs } = useLoaderData();
     return (
@@ -26,7 +26,7 @@ const ChefCard = ({ chef }) => {
                 <h3 className="text-center text-xl font-bold my-3">{name}</h3>
                 <p>Experience : {yearsOfExperience} years</p>
                 <p>Numbers of recipes : {numberOfRecipes}</p>
-                <div className="flex justify-between items-center"><span>Likes : {likes}</span> <Link to={`/chef-recipes/${id}`} className="bg-yellow-300 px-3 py-2 text-lg font-bold rounded-md">View Recipes</Link></div>
+                <div className="flex justify-between items-center"><span className='flex items-center gap-2'><AiFillLike className='text-blue-600' />Like {likes}</span> <Link to={`/chef-recipes/${id}`} className="bg-yellow-300 px-3 py-2 text-lg font-bold rounded-md">View Recipes</Link></div>
             </div>
         </div>
     )

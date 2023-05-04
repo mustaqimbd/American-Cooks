@@ -26,10 +26,10 @@ const Blog = () => {
                 <div>
                     <h1 className="text-2xl font-bold mt-6 mb-4">2. How to validate React props using PropTypes?</h1>
                     <p>1. First you have to install and import the PropTypes library</p>
-                    <p>2.You have to define the PropTypes for your component.
-                        <p>3.The PropTypes library provides several built-in validators that can be used to specify the type of prop that is expected. like : string, number, bool, func, and arrayOf validators. </p>
-                        <p>4. By using this and defining PropTypes for your components, you can catch errors early and make your code more reliable. It is a good practice to define PropTypes for all your components,</p>
-                    </p>
+                    <p>2.You have to define the PropTypes for your component.</p>
+                    <p>3.The PropTypes library provides several built-in validators that can be used to specify the type of prop that is expected. like : string, number, bool, func, and arrayOf validators. </p>
+                    <p>4. By using this and defining PropTypes for your components, you can catch errors early and make your code more reliable. It is a good practice to define PropTypes for all your components,</p>
+
                 </div>
                 <div>
                     <h1 className="text-2xl font-bold mt-6">3. What is the difference between nodejs and express js?</h1>
