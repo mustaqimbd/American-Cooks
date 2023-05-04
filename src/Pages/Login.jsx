@@ -14,7 +14,7 @@ function Login() {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('')
-    
+
     const navigate = useNavigate();
     const location = useLocation();
     const redirect = location?.state?.pathname || '/';
@@ -24,15 +24,14 @@ function Login() {
         setError('')
         setSuccess('')
         signIn(email, password)
-            .then(r => {
-                console.log(r.user);
+            .then(() => {
                 navigate(redirect, { replace: true })
             })
             .then(() => {
                 setSuccess('Login has been successful!');
             })
-            .catch(e => {
-                setError(e.message);
+            .catch(() => {
+                setError("Email or password wrong!");
             })
     }
 
@@ -59,13 +58,10 @@ function Login() {
             })
     }
 
-
-
-    // console.log(name, email, password, photo);
     return (
         <><p className="text-red-800 text-center mt-3">{error || ''}</p>
             <p className="text-blue-800 text-center mt-3">{success || ''}</p>
-            <form onSubmit={handleSignIn} className="max-w-md mx-auto mt-10 bg-purple-400 p-6">
+            <form onSubmit={handleSignIn} className="max-w-md mx-auto mt-10 bg-green-50 p-6">
                 <h1 className='text-2xl font-bold text-center'>Please Login</h1>
 
                 <div className="mb-4">
@@ -109,8 +105,8 @@ function Login() {
                 </div>
             </form>
             <div className="flex flex-col m-8">
-                <button onClick={loginWithGoogle} className="bg-blue-600 text-lg font-bold px-4 py-2 mb-4 w-[230px] rounded-md mx-auto flex items-center gap-2"><FaGoogle /> Login with Google</button>
-                <button onClick={loginWithGithub} className="bg-blue-600 text-lg font-bold px-4 py-2 w-[230px] rounded-md mx-auto flex items-center gap-2"><FaGithub /> Login with Github</button>
+                <button onClick={loginWithGoogle} className="border-2 border-purple-700 text-lg font-bold px-4 py-2 mb-4 w-[230px] rounded-md mx-auto flex items-center gap-2"><FaGoogle /> Login with Google</button>
+                <button onClick={loginWithGithub} className="border-2 border-purple-700 text-lg font-bold px-4 py-2 w-[230px] rounded-md mx-auto flex items-center gap-2"><FaGithub /> Login with Github</button>
             </div>
         </>
     );

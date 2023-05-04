@@ -1,13 +1,12 @@
 import { useContext, useState } from 'react';
 import { UserContext } from '../Provider/AuthProvider';
-
-import { GoogleAuthProvider, signInWithPopup, updateProfile } from "firebase/auth";
-import { Link } from 'react-router-dom';
+import { updateProfile } from "firebase/auth";
+import { Link, useNavigate } from 'react-router-dom';
 
 
 function Resister() {
 
-    const { createUser, auth } = useContext(UserContext)
+    const { createUser } = useContext(UserContext)
 
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
@@ -15,6 +14,8 @@ function Resister() {
     const [photo, setPhoto] = useState('')
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('')
+
+    const navigate = useNavigate();
 
     const handleResister = (e) => {
         e.preventDefault();
@@ -24,17 +25,19 @@ function Resister() {
             setError('Password must be at least 6 characters!')
             return;
         }
+        
         createUser(email, password)
+
             .then(r => {
                 updateProfile(r.user, {
                     displayName: name,
                     photoURL: photo
                 });
-                console.log(r.user);
+
             })
             .then(() => {
                 setSuccess('Registration has been successful!');
-                
+                navigate('/', { replace: true })
             })
             .catch(e => {
                 setError(e.message);
@@ -44,7 +47,7 @@ function Resister() {
     return (
         <><p className="text-red-800 text-center mt-3">{error || ''}</p>
             <p className="text-blue-800 text-center mt-3">{success || ''}</p>
-            <form onSubmit={handleResister} className="max-w-md mx-auto mt-10 bg-purple-400 p-6">
+            <form onSubmit={handleResister} className="max-w-md mx-auto mt-5 bg-green-50 mb-3 p-6">
                 <h1 className='text-2xl font-bold text-center'>Please Registration</h1>
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2" htmlFor="name">

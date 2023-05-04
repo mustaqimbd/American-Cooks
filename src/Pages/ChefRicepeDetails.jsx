@@ -7,8 +7,7 @@ import Rating from 'react-rating';
 const ChefRicepeDetails = () => {
     const [disaable, setDisable] = useState(false);
     const singleChefData = useLoaderData();
-    const { id, name, bio, numberOfRecipes, pictureUrl, recipes, yearsOfExperience, likes } = singleChefData;
-    console.log(singleChefData);
+    const { name, bio, numberOfRecipes, pictureUrl, recipes, yearsOfExperience, likes } = singleChefData;
 
     const notify = () => toast("Added to your favorite!");
     const handleButtonClick = () => {
