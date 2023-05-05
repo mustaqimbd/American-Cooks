@@ -5,16 +5,15 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useState } from 'react';
 import Rating from 'react-rating';
 const ChefRicepeDetails = () => {
-    const [disaable, setDisable] = useState(false);
+    const [disaable, setDisable] = useState([]);
     const singleChefData = useLoaderData();
     const { name, bio, numberOfRecipes, pictureUrl, recipes, yearsOfExperience, likes } = singleChefData;
 
     const notify = () => toast("Added to your favorite!");
-    const handleButtonClick = () => {
+    const handleButtonClick = (id) => {
         notify();
-        setDisable(true);
+        setDisable([...disaable, id])
     }
-
     return (
         <div>
             <ToastContainer />
@@ -37,6 +36,7 @@ const ChefRicepeDetails = () => {
                 {
                     recipes.map((recipe, index) => {
                         const { name, image, ingredients, cookingMethod, rating } = recipe;
+
                         return (
                             <div className='border' key={index}>
                                 <img className='w-full h-[400px]' src={image} alt="" />
@@ -52,8 +52,9 @@ const ChefRicepeDetails = () => {
                                                 fullSymbol={<span className="text-yellow-500 text-2xl">&#9733;</span>}
                                             />{rating}
                                             </span>
-
-                                            <button onClick={handleButtonClick} disabled={disaable} className='bg-yellow-300 px-3 py-2 text-lg font-bold rounded-md'>Favorite</button></p>
+                                            <button onClick={() => handleButtonClick(index)}
+                                                disabled={disaable.includes(index) ? true : false}
+                                                className='bg-yellow-300 px-3 py-2 text-lg font-bold rounded-md'>Favorite</button></p>
                                     </div>
                                     <p className='text-xl font-bold'>Ingredients : </p>
                                     <ul className='list-decimal ml-8 mb-4'>
@@ -68,7 +69,7 @@ const ChefRicepeDetails = () => {
                     })
                 }
             </div>
-        </div>
+        </div >
     );
 };
 
